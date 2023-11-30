@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Jamn Playlist</h1>
+        <h1>JAMN PLAYLISTS</h1>
         <SearchBar />
         <header className="App-playlist"></header>
         <SearchResults />
