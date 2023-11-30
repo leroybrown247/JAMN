@@ -20,8 +20,14 @@ class App extends React.Component {
         { id: '4', name: 'Playlist Track 1', artist: 'Playlist Artist 1', album: 'Playlist Album 1' },
         { id: '5', name: 'Playlist Track 2', artist: 'Playlist Artist 2', album: 'Playlist Album 2' },
         // Add more playlist tracks as needed
+        
       ],
     };
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove(updatedPlaylist) {
+    this.setState({ playlistTracks: updatedPlaylist })
   }
   
   render() {
@@ -32,7 +38,12 @@ class App extends React.Component {
         <header className="App-playlist"></header>
         {/*Pass the state of searchResults down to the SearchResults component*/}
         <SearchResults searchResults={this.state.searchResults} />
-        <Playlist />
+        <Playlist 
+        playlistName={this.setState.playlistName}
+        playlistTracks={this.setState.playlistTracks}
+        onRemove={this.handleRemove} // Pass the handleRemove method to the Playlist component
+        />
+        {/*Pass the state of playlistTracks down to the Playlist component*/}
       </div>
     );
   }
