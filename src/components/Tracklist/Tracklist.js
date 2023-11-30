@@ -8,11 +8,10 @@ class Tracklist extends React.Component {
 
     return (
       <div className="Tracklist">
-        <h2>Tracklist</h2>
-        {/*Map through tracks and render Track components*/}
-        {tracks.map((track) => {
-          return <Track track={track} key={track.id} />;
-        })}
+        {/* Map through tracks and render Track components */}
+        {tracks && tracks.map((track) => (
+          <Track key={track.id} track={track} />
+        ))}
       </div>
     );
   }
