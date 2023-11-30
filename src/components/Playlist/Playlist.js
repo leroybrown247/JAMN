@@ -20,12 +20,13 @@ class Playlist extends React.Component {
     const { playlistName, playlistTracks } = this.props;
 
     return (
-      <div className="Playlist">
-        <h2>Jamn Playlist</h2>
-        <input defaultValue={playlistName} />
-        {/*Pass the onRemove method to the Tracklist component*/}
-        <Tracklist tracks={playlistTracks} onRemove={this.handleRemove} />
-        <button className="Playlist-save">SAVE TO SPOTIFY</button>
+      <div className="playlist-container">
+        <div className="playlist">
+            <input className="playlistInput" defaultValue={playlistName} />
+            {/*Pass the onRemove method to the Tracklist component*/}
+            <Tracklist tracks={playlistTracks} onRemove={this.handleRemove} />
+          <button className="Playlist-btn">SAVE</button>
+        </div>
       </div>
     );
   }

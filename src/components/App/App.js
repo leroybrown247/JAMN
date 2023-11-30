@@ -38,6 +38,7 @@ class App extends React.Component {
         <header className="App-playlist"></header>
         {/*Pass the state of searchResults down to the SearchResults component*/}
         <SearchResults searchResults={this.state.searchResults} />
+        <h2>PLAYLIST</h2>
         <Playlist 
         playlistName={this.setState.playlistName}
         playlistTracks={this.setState.playlistTracks}
