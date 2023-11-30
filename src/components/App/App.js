@@ -15,8 +15,15 @@ class App extends React.Component {
         { name: "name3", artist: "artist3", album: "album3", id: 3 },
         // Hardcoded values for the playlistName and playlistTracks states
       ],
+      playlistName: 'My Playlist',
+      playlistTracks: [
+        { id: '4', name: 'Playlist Track 1', artist: 'Playlist Artist 1', album: 'Playlist Album 1' },
+        { id: '5', name: 'Playlist Track 2', artist: 'Playlist Artist 2', album: 'Playlist Album 2' },
+        // Add more playlist tracks as needed
+      ],
     };
   }
+  
   render() {
     return (
       <div className="App">
