@@ -24,7 +24,7 @@
     color: rgb(255, 0, 242);
     font-weight: bold;
     font-size: 16px;
-    border-radius: 25px;
+    border-radius: 25px 0 0 25px;
     outline: none;
 }
 
@@ -34,13 +34,13 @@
 
 .SearchButton {
     border: none;
-    background-color: #f7f2f2;
+    background-color: rgb(244, 195, 232);
     margin-top: 1rem;
     padding: 20px 20px;
     color: rgb(255, 0, 242);
     font-weight: bold;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 0 25px 25px 0;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
