@@ -1,5 +1,6 @@
 .App {
-  background-image: url(https://unsplash.com/photos/6EzEQUMF2h4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8Y2hpbGwlMjBtdXNpY3xlbnwwfHx8fDE3MDEzMDU3NTN8MA&force=true&w=2400);
+  /* background-image: url(https://unsplash.com/photos/6EzEQUMF2h4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8Y2hpbGwlMjBtdXNpY3xlbnwwfHx8fDE3MDEzMDU3NTN8MA&force=true&w=2400); */
+  background-color: var(--background);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -8,7 +9,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1.5vmin);
-  color: rgb(244, 195, 232);
+  color: var(--primary);
   text-align: center;
-  font-family: Poppins, work-sans, sans-serif;
 }
