@@ -7,10 +7,7 @@ class SearchBar extends React.Component {
     <div className="SearchBarContainer">       
       <div className="SearchBar">
         <input className="searchInput" placeholder="Enter A Song, Album, or Artist" />
-        <div className="iconContainer">
-
         <button className="SearchButton">SEARCH</button>
-        </div>
       </div>
     </div>
     )
