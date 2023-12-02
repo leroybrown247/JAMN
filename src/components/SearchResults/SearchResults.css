@@ -1,5 +1,13 @@
+Track {
+  display: flex;
+  align-items: left;
+}
 
-.SearchResultsContainer {
-    margin: 0.5rem;
-    /* background-color: blue; */
+.trackInfo-container {
+  display: flex;
+  flex-direction: column 2;
+}
+
+.Track-action {
+  margin-left: auto;
 }

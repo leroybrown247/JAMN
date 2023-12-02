@@ -14,13 +14,17 @@ class Track extends React.Component {
 
     return (
       <div className="Track">
-        <div className="Track-information">
-          <h3>{name}</h3>
-          <p>
-            {artist} | {album}
-          </p>
+        <h3>{name}</h3>
+        <div className="trackInfo-container">
+          <div className="trackInfo-content">
+            <p>
+              {artist} | {album}
+            </p>
+          </div>
+          <button className="Track-action" onClick={this.handleRemove}>
+            -
+          </button>
         </div>
-        <button className="Track-action" onClick={this.handleRemove}>-</button>
       </div>
     );
   }
