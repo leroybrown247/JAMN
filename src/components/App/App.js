@@ -44,24 +44,33 @@ class App extends React.Component {
 
   // Define a method to handle resetting the playlist
   handleResetPlaylist = () => {
-    this.setState({ playlistTracks: [] })
-  } 
+    this.setState({ playlistTracks: [] });
+  };
 
   render() {
     return (
       <div className="App">
         <h1>JAMN!</h1>
         <SearchBar />
-        <div className="App-playlist">
-          <SearchResults searchResults={this.state.searchResults} />
-          <h2>PLAYLIST</h2>
-          <Playlist
-            playlistName={this.setState.playlistName}
-            playlistTracks={this.setState.playlistTracks}
-            onNameChange={this.handleNameChange}
-            onRemove={this.handleRemove}
-            onReset={this.handleResetPlaylist} // Pass the handleResetPlaylist method as a prop to the Playlist component
-          />
+        <div className="app-content">
+        <div className="searchResults-container">
+          <div className="searchResults-content">
+            <SearchResults searchResults={this.state.searchResults} />
+          </div>
+        </div>
+
+        <div className="playlist-container">
+          <div className="playlist-content">
+            <h2>PLAYLIST</h2>
+            <Playlist
+              playlistName={this.setState.playlistName}
+              playlistTracks={this.setState.playlistTracks}
+              onNameChange={this.handleNameChange}
+              onRemove={this.handleRemove}
+              onReset={this.handleResetPlaylist} // Pass the handleResetPlaylist method as a prop to the Playlist component
+            />
+            </div>
+          </div>
         </div>
       </div>
     );

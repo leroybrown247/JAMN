@@ -16,12 +16,10 @@ class Track extends React.Component {
       <div className="Track">
         <div className="Track-information">
           <h3>{name}</h3>
-          {/*Track information*/}
           <p>
             {artist} | {album}
           </p>
         </div>
-        {/*Render a + or - anchor tag depending on the isRemoval property*/}
         <button className="Track-action" onClick={this.handleRemove}>-</button>
       </div>
     );

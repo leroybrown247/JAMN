@@ -1,5 +1,4 @@
 .App {
-  /* background-image: url(https://unsplash.com/photos/6EzEQUMF2h4/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8Y2hpbGwlMjBtdXNpY3xlbnwwfHx8fDE3MDEzMDU3NTN8MA&force=true&w=2400); */
   background-color: var(--background);
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,4 +10,30 @@
   font-size: calc(10px + 1.5vmin);
   color: var(--primary);
   text-align: center;
+}
+
+.app-content {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.searchResults-container {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin-top: 2rem;
+}
+
+.playlist-container {
+  background-color: blueviolet;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
 }
