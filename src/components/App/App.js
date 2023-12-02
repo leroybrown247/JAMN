@@ -32,19 +32,20 @@ class App extends React.Component {
       ],
     };
   }
-  // this.handleRemove = this.handleRemove.bind(this);
-
   // Define a method to handle playlistName changes
-
   handleNameChange = (newName) => {
     this.setState({ playlistName: newName });
   };
 
   // Define a method to handle adding a track to the playlist
-
   handleRemove(updatedPlaylist) {
     this.setState({ playlistTracks: updatedPlaylist });
   }
+
+  // Define a method to handle resetting the playlist
+  handleResetPlaylist = () => {
+    this.setState({ playlistTracks: [] })
+  } 
 
   render() {
     return (
@@ -57,8 +58,9 @@ class App extends React.Component {
           <Playlist
             playlistName={this.setState.playlistName}
             playlistTracks={this.setState.playlistTracks}
-            onNameChange={this.handleNameChange} // Pass the handleNameChange method to the Playlist component
-            onRemove={this.handleRemove} // Pass the handleRemove method to the Playlist component
+            onNameChange={this.handleNameChange}
+            onRemove={this.handleRemove}
+            onReset={this.handleResetPlaylist} // Pass the handleResetPlaylist method as a prop to the Playlist component
           />
         </div>
       </div>
