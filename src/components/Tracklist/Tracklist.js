@@ -4,15 +4,13 @@ import "./Tracklist.css";
 
 class Tracklist extends React.Component {
   render() {
-    const { tracks, onRemove } = this.props; // Destructuring
+    const { tracks, onRemove } = this.props;
 
     return (
       <div className="Tracklist">
-        {/* Map through tracks and render Track components */}
         {tracks &&
           tracks.map((track) => (
             <Track key={track.id} track={track} onRemove={onRemove} />
-            // Pass the track property to the onRemove method
           ))}
       </div>
     );

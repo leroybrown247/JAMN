@@ -6,7 +6,7 @@ import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); // Call the super method on the first line of the constructor method
     // Initial state of the searchResults array is set to an array of three objects
     this.state = {
       searchResults: [
@@ -15,36 +15,52 @@ class App extends React.Component {
         { name: "name3", artist: "artist3", album: "album3", id: 3 },
         // Hardcoded values for the playlistName and playlistTracks states
       ],
-      playlistName: 'My Playlist',
+      playlistName: "My Playlist",
       playlistTracks: [
-        { id: '4', name: 'Playlist Track 1', artist: 'Playlist Artist 1', album: 'Playlist Album 1' },
-        { id: '5', name: 'Playlist Track 2', artist: 'Playlist Artist 2', album: 'Playlist Album 2' },
-        // Add more playlist tracks as needed
-        
+        {
+          id: "4",
+          name: "Playlist Track 1",
+          artist: "Playlist Artist 1",
+          album: "Playlist Album 1",
+        },
+        {
+          id: "5",
+          name: "Playlist Track 2",
+          artist: "Playlist Artist 2",
+          album: "Playlist Album 2",
+        },
       ],
     };
-    this.handleRemove = this.handleRemove.bind(this);
   }
+  // this.handleRemove = this.handleRemove.bind(this);
+
+  // Define a method to handle playlistName changes
+
+  handleNameChange = (newName) => {
+    this.setState({ playlistName: newName });
+  };
+
+  // Define a method to handle adding a track to the playlist
 
   handleRemove(updatedPlaylist) {
-    this.setState({ playlistTracks: updatedPlaylist })
+    this.setState({ playlistTracks: updatedPlaylist });
   }
-  
+
   render() {
     return (
       <div className="App">
         <h1>JAMN!</h1>
         <SearchBar />
-        <header className="App-playlist"></header>
-        {/*Pass the state of searchResults down to the SearchResults component*/}
-        <SearchResults searchResults={this.state.searchResults} />
-        <h2>PLAYLIST</h2>
-        <Playlist 
-        playlistName={this.setState.playlistName}
-        playlistTracks={this.setState.playlistTracks}
-        onRemove={this.handleRemove} // Pass the handleRemove method to the Playlist component
-        />
-        {/*Pass the state of playlistTracks down to the Playlist component*/}
+        <div className="App-playlist">
+          <SearchResults searchResults={this.state.searchResults} />
+          <h2>PLAYLIST</h2>
+          <Playlist
+            playlistName={this.setState.playlistName}
+            playlistTracks={this.setState.playlistTracks}
+            onNameChange={this.handleNameChange} // Pass the handleNameChange method to the Playlist component
+            onRemove={this.handleRemove} // Pass the handleRemove method to the Playlist component
+          />
+        </div>
       </div>
     );
   }
