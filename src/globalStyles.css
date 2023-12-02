@@ -1,0 +1,50 @@
+:root {
+    --primary: #F652A0;
+    --pure: #ffffff;
+    --dark: #4C5270;
+    --paragraph: #36EEE0;
+    --background: #333652;
+    --backgroundTwo: #BCECE0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    color: var(--dark);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  
+  body h2 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+  
+  body h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  
+  body p {
+    font-size: 1.2rem;
+    line-height: 0.4rem;
+    color: var(--backgroundTwo);
+    font-family: "Work-sans", sans-serif;
+  }
+  
+  span {
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: underline;
+  }
