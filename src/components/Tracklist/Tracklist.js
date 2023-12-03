@@ -2,30 +2,21 @@ import React from "react";
 import Track from "../Track/Track";
 import "./Tracklist.css";
 
-class Tracklist extends React.Component {
-  render() {
-    console.log('Tracks:', this.props.tracks);
-    const { tracks, onRemove } = this.props;
+function Tracklist({ tracks, onRemove }) {
+  console.log("Tracks:", tracks);
 
-    return (
-      <div className="Tracklist">
-        {tracks &&
-          tracks.map((track, index) => (
-            <React.Fragment key={track.id} >
+  return (
+    <div className="Tracklist">
+      {tracks &&
+        tracks.map((track, index) => (
+          <React.Fragment key={track.id}>
+            <Track track={track} onRemove={onRemove} />
 
-              <Track 
-              track={track} 
-              onRemove={onRemove} 
-              />
-
-              {index < tracks.length - 1 && <hr />}
-
-            </React.Fragment>
-
-          ))}
-      </div>
-    );
-  }
+            {index < tracks.length - 1 && <hr />}
+          </React.Fragment>
+        ))}
+    </div>
+  );
 }
 
 export default Tracklist;
