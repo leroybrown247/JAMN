@@ -37,9 +37,34 @@ hasAccessToken() {
     return accessToken ? true : false;
   },
 
-}
+// Method to make a Spotify API request
+async search(term) {
+    const accessToken = Spotify.getAccessToken();
+    if (!accessToken) {
+      throw new Error('Access token is missing.');
+    }
 
+    const apiUrl = `https://api.spotify.com/v1/search?type=track&q=${term}`;
+    const response = await fetch(apiUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
 
-
+    if (response.ok) {
+        const jsonResponse = await response.json();
+        return jsonResponse.tracks.items.map(track => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists[0].name,
+          album: track.album.name,
+          uri: track.uri
+        }));
+      }
+  
+      throw new Error('Failed to fetch search results from Spotify.');
+    },
+    // Additional methods can be added as needed for your application
+  };
 
 export default Spotify;
