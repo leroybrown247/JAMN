@@ -10,15 +10,11 @@ class SearchBar extends React.Component {
     };
   }
 
-    // Define the method to handle user input
-
     handleTermChange = (event) => {
       this.setState({
         term: event.target.value,
       });
     };
-
-    // Define a method to handle the search button click
 
     handleSearch = () => {
       const { term } = this.state;

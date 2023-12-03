@@ -4,34 +4,26 @@ import "./Playlist.css";
 
 class Playlist extends React.Component {
 
-  // Define a state for the playlistName
   state = {
     isEditing: false,
   };
 
-  // Define a method to toggle the isEditing state
   toggleEdit = () => {
     this.setState((prevState) => ({
       isEditing: !prevState.isEditing,
     }));
   }
 
-  // Define a method to handle the playlistName change
   handleNameChange = (event) => {
     const { onNameChange } = this.props;
 
-    // Update the playlistName state
     onNameChange(event.target.value);
   }
 
-  // Define a method handle saving the playlist
   handle = () => {
     const { playlistTracks } = this.props;
-    // Map over the playlistTracks array and return an array of track URIs
     const trackURIs = playlistTracks.map((track) => track.uri);
-    // log the array of track URIs to the console
     console.log(trackURIs);
-    // Implement the savePlaylist method
     this.props.onRemove([]);
 
   }
@@ -43,7 +35,6 @@ class Playlist extends React.Component {
     return (
       <div className="leadPlaylist-container">
         <div className="playlist">
-          {/* Render the playlistName as an input if editing is true */}
 
           {isEditing ? (
             
@@ -60,7 +51,7 @@ class Playlist extends React.Component {
               </h2>
             )}
 
-            <Tracklist tracks={playlistTracks} onRemove={this.handleRemove} />
+            <Tracklist tracks={playlistTracks} onRemove={this.props.onRemove} />
 
           <button className="Playlist-btn" onClick={this.handleSave}>SAVE</button>
           
