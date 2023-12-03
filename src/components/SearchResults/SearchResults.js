@@ -2,14 +2,14 @@ import React from "react";
 import Tracklist from "../Tracklist/Tracklist";
 import "./SearchResults.css";
 
-function SearchResults({ searchResults }) {
-  console.log('Search results:', searchResults);
+function SearchResults({ searchResults, onAdd }) {
+  console.log("Search results:", searchResults);
 
   return (
     <div className="SearchResultsContainer">
       <div className="SearchResults">
         <h2>Search Results</h2>
-        <Tracklist tracks={searchResults} />
+        <Tracklist tracks={searchResults} onAdd={onAdd} isRemoval={false} />
       </div>
     </div>
   );

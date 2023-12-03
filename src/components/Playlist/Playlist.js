@@ -1,36 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Tracklist from "../Tracklist/Tracklist";
 import "./Playlist.css";
 
-class Playlist extends React.Component {
+function Playlist ({ playlistName, playlistTracks, onRemove, onNameChange }) {
 
-  state = {
-    isEditing: false,
+  const [isEditing, setIsEditing] = useState(false);
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
   };
 
-  toggleEdit = () => {
-    this.setState((prevState) => ({
-      isEditing: !prevState.isEditing,
-    }));
-  }
-
-  handleNameChange = (event) => {
-    const { onNameChange } = this.props;
-
+  const handleNameChange = (event) => {
     onNameChange(event.target.value);
-  }
+  };
 
-  handle = () => {
-    const { playlistTracks } = this.props;
+  const handleSave = () => {
     const trackURIs = playlistTracks.map((track) => track.uri);
     console.log(trackURIs);
-    this.props.onRemove([]);
-
-  }
-
-  render() {
-    const { playlistName, playlistTracks } = this.props;
-    const { isEditing } = this.state;
+    onRemove([]);
+  };
 
     return (
       <div className="leadPlaylist-container">
@@ -41,24 +29,20 @@ class Playlist extends React.Component {
             <input 
             className="playlistInput" 
             defaultValue={playlistName} 
-            onBlur={this.toggleEdit}
-            onChange={this.handleNameChange}
+            onBlur={toggleEdit}
+            onChange={handleNameChange}
             />
 
           ) : (
-              <h2 className="playlistTitle" onClick={this.toggleEdit}>
+              <h2 className="playlistTitle" onClick={toggleEdit}>
                 {playlistName}
               </h2>
             )}
-
-            <Tracklist tracks={playlistTracks} onRemove={this.props.onRemove} />
-
-          <button className="Playlist-btn" onClick={this.handleSave}>SAVE</button>
-          
+            <Tracklist tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
+          <button className="Playlist-btn" onClick={handleSave}>SAVE</button>
         </div>
       </div>
     )
   }
-}
 
 export default Playlist;
