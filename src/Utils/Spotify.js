@@ -31,6 +31,12 @@ if (accessTokenMatch && expiresInMatch) {
   window.location = redirectUrl;
 }
 },
+
+// Method to check if there is an access token
+hasAccessToken() {
+    return accessToken ? true : false;
+  },
+
 }
 
 
