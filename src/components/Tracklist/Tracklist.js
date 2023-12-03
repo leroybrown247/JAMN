@@ -4,6 +4,7 @@ import "./Tracklist.css";
 
 class Tracklist extends React.Component {
   render() {
+    console.log('Tracks:', this.props.tracks);
     const { tracks, onRemove } = this.props;
 
     return (

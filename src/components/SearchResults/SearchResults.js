@@ -4,6 +4,10 @@ import "./SearchResults.css";
 
 class SearchResults extends React.Component {
   render() {
+    console.log('State:', this.state);
+  console.log('Props:', this.props);
+    console.log('Search results:', this.props.searchResults);
+    
 
 // remove hard-coded tracks and replace with this.props.searchResults
 

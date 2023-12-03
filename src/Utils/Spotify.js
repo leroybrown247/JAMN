@@ -3,6 +3,7 @@ let expiresIn;
 
 const clientId = "a215e7fb7a394eb4b19bfbce7c4c7a69";
 const redirectUri = "http://localhost:3000";
+// const redirectUri = "https://wwww.Jamn.surge.sh";
 
 const Spotify = {
   // Check if there is an access token in the URL
@@ -15,9 +16,15 @@ const Spotify = {
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
+      console.log('Access token match:', accessTokenMatch);
+      console.log('Expires in match:', expiresInMatch);
+
     if (accessTokenMatch && expiresInMatch) {
       accessToken = accessTokenMatch[1];
       expiresIn = Number(expiresInMatch[1]);
+
+      console.log('New access token:', accessToken);
+      console.log('Expires in:', expiresIn);
 
       // Clear parameters from the URL
       window.setTimeout(() => (accessToken = ""), expiresIn * 1000);

@@ -1,64 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import "./App.css";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchResults: [],
-      playlistName: "My Playlist",
-      playlistTracks: [],
-    };
-  }
-  handleNameChange = (newName) => {
-    this.setState({ playlistName: newName });
+function App() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState("My Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState([]);
+
+  const handleNameChange = (newName) => {
+    setPlaylistName(newName);
   };
 
-  handleRemove = (updatedPlaylist) => {
-    this.setState({ playlistTracks: updatedPlaylist });
+  const handleRemove = (updatedPlaylist) => {
+    setPlaylistTracks(updatedPlaylist);
   }
 
-  handleResetPlaylist = () => {
-    this.setState({ playlistTracks: [] });
+  const handleResetPlaylist = () => {
+    setPlaylistTracks([]);
   };
 
-  handleSearchResults = (searchResults) => {
-    this.setState({ searchResults: searchResults });
+  const handleSearchResults = (searchResults) => {
+    console.log('Search results received:', searchResults);
+    setSearchResults(searchResults);
   }
 
-  render() {
-  const { playlistName, playlistTracks } = this.state;
-  
-    return (
-      <div className="App">
-        <h1>JAMN!</h1>
-        <SearchBar onSearchResults={this.handleSearchResults} />
-        <div className="app-content">
-          <div className="searchResults-container">
-            <div className="searchResults-content">
-              <SearchResults searchResults={this.state.searchResults} />
-            </div>
+  return (
+    <div className="App">
+      <h1>JAMN!</h1>
+      <SearchBar onSearchResults={handleSearchResults} />
+      <div className="app-content">
+        <div className="searchResults-container">
+          <div className="searchResults-content">
+            <SearchResults searchResults={searchResults} />
           </div>
+        </div>
 
-          <div className="playlist-container">
-            <div className="playlist-content">
-              <h2>PLAYLIST</h2>
-              <Playlist
-                playlistName={playlistName}
-                playlistTracks={playlistTracks}
-                onNameChange={this.handleNameChange}
-                onRemove={this.handleRemove}
-                onReset={this.handleResetPlaylist}
-              />
-            </div>
+        <div className="playlist-container">
+          <div className="playlist-content">
+            <h2>PLAYLIST</h2>
+            <Playlist
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onNameChange={handleNameChange}
+              onRemove={handleRemove}
+              onReset={handleResetPlaylist}
+            />
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
