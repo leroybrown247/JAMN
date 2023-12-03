@@ -5,13 +5,13 @@ import "./SearchResults.css";
 class SearchResults extends React.Component {
   render() {
 
-const { searchResults } = this.props; // Destructuring
+// remove hard-coded tracks and replace with this.props.searchResults
 
     return (
       <div className="SearchResultsContainer">
         <div className="SearchResults">
           <h2>Search Results</h2>
-          {searchResults && <Tracklist tracks={ searchResults } />}
+           <Tracklist tracks={ this.props.searchResults } />
         </div>
       </div>
     );
