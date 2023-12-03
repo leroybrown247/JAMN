@@ -19,9 +19,21 @@ const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 if (accessTokenMatch && expiresInMatch) {
   accessToken = accessTokenMatch[1];
   expiresIn = Number(expiresInMatch[1]);
+
+  // Clear parameters from the URL
+  window.setTimeout(() => accessToken = '', expiresIn * 1000);
+  window.history.pushState('Access Token', null, '/');
+
+  return accessToken;
+} else {
+  // Redirect user to Spotify authorization URL
+  const redirectUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+  window.location = redirectUrl;
+}
+},
 }
 
-}
-}
+
+
 
 export default Spotify;
