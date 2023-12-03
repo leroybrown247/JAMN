@@ -13,9 +13,13 @@ function App() {
     setPlaylistName(newName);
   };
 
+  const handleAdd = (track) => {
+    setPlaylistTracks([...playlistTracks, track]);
+  };
+
   const handleRemove = (updatedPlaylist) => {
     setPlaylistTracks(updatedPlaylist);
-  }
+  };
 
   const handleResetPlaylist = () => {
     setPlaylistTracks([]);
@@ -33,7 +37,7 @@ function App() {
       <div className="app-content">
         <div className="searchResults-container">
           <div className="searchResults-content">
-            <SearchResults searchResults={searchResults} />
+            <SearchResults searchResults={searchResults} onAdd={handleAdd} />
           </div>
         </div>
 

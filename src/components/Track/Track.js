@@ -21,7 +21,7 @@ function Track({ track, onAdd, onRemove, isRemoval }) {
             {artist} | {album}
           </p>
         </div>
-        {!isRemoval ? (
+        {isRemoval ? (
           <button className="trackAction-btn" onClick={handleRemove}>
             -
           </button>
