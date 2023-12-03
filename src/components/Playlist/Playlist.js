@@ -41,7 +41,7 @@ class Playlist extends React.Component {
     const { isEditing } = this.state;
 
     return (
-      <div className="playlist-container">
+      <div className="leadPlaylist-container">
         <div className="playlist">
           {/* Render the playlistName as an input if editing is true */}
 

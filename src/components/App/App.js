@@ -67,7 +67,7 @@ class App extends React.Component {
               playlistTracks={this.setState.playlistTracks}
               onNameChange={this.handleNameChange}
               onRemove={this.handleRemove}
-              onReset={this.handleResetPlaylist} // Pass the handleResetPlaylist method as a prop to the Playlist component
+              onReset={this.handleResetPlaylist}
             />
             </div>
           </div>

@@ -1,0 +1,27 @@
+Track {
+    display: flex;
+    align-items: left;
+  }
+  
+  .trackInfo-container {
+    display: flex;
+    flex-direction: column 2;
+  }
+  
+  .trackAction-btn {
+    border: none;
+    background-color: var(--primary);
+    margin: 0 0 0 2rem;
+    padding: 20px 20px;
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.trackAction-btn:hover {
+    background-color: var(--backgroundTwo);
+    transform: scale(1.1);
+}

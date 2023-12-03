@@ -1,13 +1,1 @@
-Track {
-  display: flex;
-  align-items: left;
-}
 
-.trackInfo-container {
-  display: flex;
-  flex-direction: column 2;
-}
-
-.Track-action {
-  margin-left: auto;
-}

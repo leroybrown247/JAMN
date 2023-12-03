@@ -9,8 +9,11 @@ class Tracklist extends React.Component {
     return (
       <div className="Tracklist">
         {tracks &&
-          tracks.map((track) => (
-            <Track key={track.id} track={track} onRemove={onRemove} />
+          tracks.map((track, index) => (
+            <React.Fragment key={track.id}>
+              <Track track={track} onRemove={onRemove} />
+              {index < tracks.length - 1 && <hr />}
+            </React.Fragment>
           ))}
       </div>
     );

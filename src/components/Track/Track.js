@@ -21,7 +21,7 @@ class Track extends React.Component {
               {artist} | {album}
             </p>
           </div>
-          <button className="Track-action" onClick={this.handleRemove}>
+          <button className="trackAction-btn" onClick={this.handleRemove}>
             -
           </button>
         </div>
