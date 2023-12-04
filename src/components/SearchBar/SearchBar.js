@@ -30,6 +30,12 @@ function SearchBar({ onSearchResults }) {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="SearchBarContainer">
       <div className="SearchBar">
@@ -37,6 +43,7 @@ function SearchBar({ onSearchResults }) {
           className="searchInput"
           placeholder="Enter song, album, or artist"
           onChange={handleTermChange}
+          onKeyDown={handleKeyPress} // Add onKeyPress event handler
           autoFocus
         />
 
