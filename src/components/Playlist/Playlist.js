@@ -4,14 +4,20 @@ import "./Playlist.css";
 
 function Playlist({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(playlistName);
+
 
   const toggleEdit = () => {
-    setIsEditing(!isEditing);
+    if (inputValue !== '') {
+      setIsEditing(!isEditing);
+      setInputValue(playlistName); // Reset the input value when editing starts
+    }
   };
 
-  const handleNameChange = (event) => {
-    console.log("Input value:", event.target.value); // Log the input value
-    onNameChange(event.target.value);
+  const handleNameChange = (value) => {
+    console.log("Input value:", value); // Log the input value
+    setInputValue(value); // Update the input value
+    onNameChange(value);
   };
 
   const handleSave = () => {
@@ -28,12 +34,19 @@ function Playlist({ playlistName, playlistTracks, onRemove, onNameChange, onSave
       <div className="playlist">
         {isEditing ? (
           <input
-            data-testid="playlist-input"
-            className="playlistInput"
-            defaultValue={playlistName}
-            onBlur={toggleEdit}
-            onChange={handleNameChange}
-            autoFocus
+          data-testid="playlist-input"
+          className="playlistInput"
+          value={inputValue}
+          defaultValue={playlistName}
+          onBlur={toggleEdit}
+          onChange={(e) => handleNameChange(e.target.value)}
+          placeholder={isEditing ? '' : playlistName}
+          onFocus={() => {
+            console.log('Input focused, input cleared');
+            handleNameChange('');
+          }}
+          autoFocus
+        
           />
         ) : (
           <h2 className="playlistTitle" onClick={toggleEdit}>
