@@ -1,5 +1,6 @@
 import React from "react";
 import "./Track.css";
+import AudioPlayer from "./AudioPlayer/AudioPlayer";
 
 function Track({ track, onAdd, onRemove, isRemoval }) {
   const handleAdd = () => {
@@ -10,7 +11,7 @@ function Track({ track, onAdd, onRemove, isRemoval }) {
     onRemove(track.id);
   };
 
-  const { name, artist, album, previewUrl } = track;
+  const { name, artist, album } = track;
 
   return (
     <div className="Track">
@@ -20,9 +21,10 @@ function Track({ track, onAdd, onRemove, isRemoval }) {
           <p>
             {artist} | {album}
           </p>
-          <audio controls src={previewUrl}>
+          <AudioPlayer url={track.previewUrl} />
+          {/* <audio controls src={previewUrl}>
             Your browser does not support the audio element.
-            </audio>
+            </audio> */}
         </div>
         {isRemoval ? (
           <button className="trackAction-btn" onClick={handleRemove}>
