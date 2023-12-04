@@ -25,7 +25,7 @@ function SearchBar({ onSearchResults }) {
       Spotify.search(term)
         .then((searchResults) => {
           console.log('Spotify.search results:', searchResults);
-          setTerm(searchResults);
+          // setTerm(searchResults);
           onSearchResults(searchResults);
         })
         .catch((error) => {
@@ -46,7 +46,7 @@ function SearchBar({ onSearchResults }) {
             autoFocus
           />
 
-          <button className="SearchButton" onClick={() => handleSearch(term)}>
+          <button className="SearchButton" onClick={() => handleSearch()}>
             SEARCH
           </button>
         </div>

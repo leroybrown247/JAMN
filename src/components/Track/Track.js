@@ -3,11 +3,11 @@ import "./Track.css";
 
 function Track({ track, onAdd, onRemove, isRemoval }) {
   const handleAdd = () => {
-    onAdd(track);
+    onAdd(track.id);
   };
 
   const handleRemove = () => {
-    onRemove(track);
+    onRemove(track.id);
   };
 
   const { name, artist, album } = track;

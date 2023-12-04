@@ -13,11 +13,15 @@ function App() {
     setPlaylistName(newName);
   };
 
-  const handleAdd = (track) => {
-    setPlaylistTracks([...playlistTracks, track]);
+  const handleAdd = (trackId) => {
+    const trackToAdd = searchResults.find(track => track.id === trackId);
+    if (trackToAdd && !playlistTracks.includes(trackToAdd)) {
+      setPlaylistTracks([...playlistTracks, trackToAdd]);
+    }
   };
-
-  const handleRemove = (updatedPlaylist) => {
+  
+  const handleRemove = (trackIdToRemove) => {
+    const updatedPlaylist = playlistTracks.filter(track => track.id !== trackIdToRemove);
     setPlaylistTracks(updatedPlaylist);
   };
 
@@ -37,7 +41,10 @@ function App() {
       <div className="app-content">
         <div className="searchResults-container">
           <div className="searchResults-content">
-            <SearchResults searchResults={searchResults} onAdd={handleAdd} />
+            <SearchResults 
+            searchResults={searchResults} 
+            onAdd={handleAdd} 
+            />
           </div>
         </div>
 
