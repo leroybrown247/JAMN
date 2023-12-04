@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Import useEffect
 import "./SearchBar.css";
 import Spotify from "../../Utils/Spotify";
 
 function SearchBar({ onSearchResults }) {
   const [term, setTerm] = useState("");
+
+  // Call Spotify.getAccessToken() when the component mounts
+  useEffect(() => {
+    Spotify.getAccessToken();
+  }, []);
 
   const handleTermChange = (event) => {
     const newTerm = event.target.value;
@@ -20,7 +25,7 @@ function SearchBar({ onSearchResults }) {
       Spotify.search(term)
         .then((searchResults) => {
           console.log('Spotify.search results:', searchResults);
-          // setTerm(searchResults);
+          setTerm(searchResults);
           onSearchResults(searchResults);
         })
         .catch((error) => {
@@ -31,7 +36,6 @@ function SearchBar({ onSearchResults }) {
     }
   };
 
-  // console.log('Rendering search results');
   return (
       <div className="SearchBarContainer">
         <div className="SearchBar">
@@ -42,7 +46,7 @@ function SearchBar({ onSearchResults }) {
             autoFocus
           />
 
-          <button className="SearchButton" onClick={handleSearch}>
+          <button className="SearchButton" onClick={() => handleSearch(term)}>
             SEARCH
           </button>
         </div>
