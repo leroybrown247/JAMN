@@ -9,6 +9,7 @@ function SearchResults({ searchResults, onAdd }) {
     <div className="SearchResultsContainer">
       <div className="SearchResults">
         <h2>Search Results</h2>
+        <hr />
         <Tracklist tracks={searchResults} onAdd={onAdd} isRemoval={false} />
       </div>
     </div>
