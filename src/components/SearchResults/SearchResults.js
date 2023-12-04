@@ -3,7 +3,6 @@ import Tracklist from "../Tracklist/Tracklist";
 import "./SearchResults.css";
 
 function SearchResults({ searchResults, onAdd }) {
-  console.log("Search results:", searchResults);
 
   return (
     <div className="SearchResultsContainer">

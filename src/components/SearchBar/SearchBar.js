@@ -5,7 +5,6 @@ import Spotify from "../../Utils/Spotify";
 function SearchBar({ onSearchResults }) {
   const [term, setTerm] = useState("");
 
-  // Call Spotify.getAccessToken() when the component mounts
   useEffect(() => {
     Spotify.getAccessToken();
   }, []);
@@ -18,14 +17,9 @@ function SearchBar({ onSearchResults }) {
   };
 
   const handleSearch = () => {
-    console.log('Search button clicked');
-    console.log('Rendering search results');
-
     if (term.trim() !== "") {
       Spotify.search(term)
         .then((searchResults) => {
-          console.log('Spotify.search results:', searchResults);
-          // setTerm(searchResults);
           onSearchResults(searchResults);
         })
         .catch((error) => {
@@ -37,22 +31,21 @@ function SearchBar({ onSearchResults }) {
   };
 
   return (
-      <div className="SearchBarContainer">
-        <div className="SearchBar">
-          <input
-            className="searchInput"
-            placeholder="Enter song, album, or artist"
-            onChange={handleTermChange}
-            autoFocus
-          />
+    <div className="SearchBarContainer">
+      <div className="SearchBar">
+        <input
+          className="searchInput"
+          placeholder="Enter song, album, or artist"
+          onChange={handleTermChange}
+          autoFocus
+        />
 
-          <button className="SearchButton" onClick={() => handleSearch()}>
-            SEARCH
-          </button>
-        </div>
+        <button className="SearchButton" onClick={() => handleSearch()}>
+          SEARCH
+        </button>
       </div>
-    );
-  }
-
+    </div>
+  );
+}
 
 export default SearchBar;

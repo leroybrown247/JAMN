@@ -14,14 +14,16 @@ function App() {
   };
 
   const handleAdd = (trackId) => {
-    const trackToAdd = searchResults.find(track => track.id === trackId);
+    const trackToAdd = searchResults.find((track) => track.id === trackId);
     if (trackToAdd && !playlistTracks.includes(trackToAdd)) {
       setPlaylistTracks([...playlistTracks, trackToAdd]);
     }
   };
-  
+
   const handleRemove = (trackIdToRemove) => {
-    const updatedPlaylist = playlistTracks.filter(track => track.id !== trackIdToRemove);
+    const updatedPlaylist = playlistTracks.filter(
+      (track) => track.id !== trackIdToRemove
+    );
     setPlaylistTracks(updatedPlaylist);
   };
 
@@ -30,9 +32,8 @@ function App() {
   };
 
   const handleSearchResults = (searchResults) => {
-    console.log('Search results received:', searchResults);
     setSearchResults(searchResults);
-  }
+  };
 
   return (
     <div className="App">
@@ -41,16 +42,12 @@ function App() {
       <div className="app-content">
         <div className="searchResults-container">
           <div className="searchResults-content">
-            <SearchResults 
-            searchResults={searchResults} 
-            onAdd={handleAdd} 
-            />
+            <SearchResults searchResults={searchResults} onAdd={handleAdd} />
           </div>
         </div>
 
         <div className="playlist-container">
           <div className="playlist-content">
-            {/* <h2>PLAYLIST</h2> */}
             <Playlist
               playlistName={playlistName}
               playlistTracks={playlistTracks}
