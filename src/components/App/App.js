@@ -7,11 +7,12 @@ import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("Add Playlist Name");
-  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistName, setPlaylistName] = useState(localStorage.getItem('playlistName') || 'Add Playlist Name');
+  const [playlistTracks, setPlaylistTracks] = useState(JSON.parse(localStorage.getItem('playlistTracks')) || []);
   const [isSaving, setIsSaving] = useState(false);
   const [hasSearched, setHasSearched] = useState(false); // New state variable
   const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
+  
 
   const handleNameChange = (newName) => {
     setPlaylistName(newName);
@@ -54,6 +55,11 @@ function App() {
     setPlaylistName('New Playlist...');
     setPlaylistTracks([]);
   };
+
+  useEffect(() => {
+    localStorage.setItem('playlistName', playlistName);
+    localStorage.setItem('playlistTracks', JSON.stringify(playlistTracks));
+  }, [playlistName, playlistTracks]);
 
   return (
     <div className="App">
