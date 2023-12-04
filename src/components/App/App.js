@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
@@ -11,8 +11,7 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
   const [hasSearched, setHasSearched] = useState(false); // New state variable
-
-  
+  const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
 
   const handleNameChange = (newName) => {
     setPlaylistName(newName);
@@ -36,8 +35,13 @@ function App() {
     setPlaylistTracks([]);
   };
 
-  const handleSearchResults = (searchResults) => {
+  useEffect(() => {
+    localStorage.setItem('searchTerm', searchTerm);
+  }, [searchTerm]);
+
+  const handleSearchResults = (searchResults, term) => {
     setSearchResults(searchResults);
+    setSearchTerm(term);
     setHasSearched(true); // Set hasSearched to true when a search is made
   };
 
@@ -58,7 +62,7 @@ function App() {
       ) : (
         <>
           <h1>JAMN!</h1>
-          <SearchBar onSearchResults={handleSearchResults} />
+          <SearchBar onSearchResults={handleSearchResults} initialTerm={searchTerm} />
           <div className="app-content">
             <div className="searchResults-container">
               <div className="searchResults-content">

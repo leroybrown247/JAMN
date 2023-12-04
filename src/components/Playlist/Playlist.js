@@ -53,6 +53,12 @@ function Playlist({
               console.log("Input focused, input cleared");
               handleNameChange("");
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                toggleEdit();
+              }
+            }}
             autoFocus
           />
         ) : (
