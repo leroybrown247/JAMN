@@ -24,7 +24,7 @@ function Playlist ({ playlistName, playlistTracks, onRemove, onNameChange }) {
       <div className="leadPlaylist-container">
         <div className="playlist">
           {isEditing ? (
-            <input 
+            <input data-testid="playlist-input"
             className="playlistInput" 
             defaultValue={playlistName} 
             onBlur={toggleEdit}
