@@ -7,9 +7,12 @@ import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("New Playlist...");
+  const [playlistName, setPlaylistName] = useState("Add Playlist Name");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false); // New state variable
+
+  
 
   const handleNameChange = (newName) => {
     setPlaylistName(newName);
@@ -35,6 +38,7 @@ function App() {
 
   const handleSearchResults = (searchResults) => {
     setSearchResults(searchResults);
+    setHasSearched(true); // Set hasSearched to true when a search is made
   };
 
   const savePlaylist = async () => {
@@ -75,6 +79,8 @@ function App() {
                   onRemove={handleRemove}
                   onReset={handleResetPlaylist}
                   onSave={savePlaylist}
+                  hasSearched={hasSearched} // Pass hasSearched as a prop
+
                 />
               </div>
             </div>
