@@ -42,7 +42,7 @@ function App() {
       <div className="app-content">
         <div className="searchResults-container">
           <div className="searchResults-content">
-            <SearchResults searchResults={searchResults} onAdd={handleAdd} />
+          <SearchResults searchResults={searchResults} onAdd={handleAdd} playlistTracks={playlistTracks} />
           </div>
         </div>
 
