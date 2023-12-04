@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Tracklist from "../Tracklist/Tracklist";
 import "./Playlist.css";
 
-function Playlist({ playlistName, playlistTracks, onRemove, onNameChange }) {
+function Playlist({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => {
@@ -19,7 +19,8 @@ function Playlist({ playlistName, playlistTracks, onRemove, onNameChange }) {
     console.log(trackURIs);
     console.log("Saving playlist with name:", playlistName); // Log the playlist name
     console.log("Track URIs:", trackURIs); // Log the track URIs
-    onRemove([]);
+    // onRemove([]);
+    onSave();
   };
 
   return (
