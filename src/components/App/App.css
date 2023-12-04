@@ -18,7 +18,7 @@
   justify-content: center;
   width: 100%;
   gap: 2rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .searchResults-container {
@@ -58,7 +58,41 @@
   border-radius: 1rem;
 }
 
-.App p {
+.saved-playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: 1rem;
+}
+
+.saved-playlist-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.saved-playlist-p {
+  text-align: center;
+  line-height: 1.8rem;
+  color: var(--backgroundTwo);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #cccccc56;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+p {
   text-align: left;
 }
 
