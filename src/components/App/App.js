@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("My Playlist");
+  const [playlistName, setPlaylistName] = useState("New Playlist...");
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const handleNameChange = (newName) => {
@@ -43,7 +43,7 @@ function App() {
 
         <div className="playlist-container">
           <div className="playlist-content">
-            <h2>PLAYLIST</h2>
+            {/* <h2>PLAYLIST</h2> */}
             <Playlist
               playlistName={playlistName}
               playlistTracks={playlistTracks}

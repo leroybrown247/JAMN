@@ -14,12 +14,13 @@ function SearchBar({ onSearchResults }) {
 
   const handleSearch = () => {
     console.log('Search button clicked');
+    console.log('Rendering search results');
 
     if (term.trim() !== "") {
       Spotify.search(term)
         .then((searchResults) => {
           console.log('Spotify.search results:', searchResults);
-          setTerm(searchResults);
+          // setTerm(searchResults);
           onSearchResults(searchResults);
         })
         .catch((error) => {
@@ -30,14 +31,15 @@ function SearchBar({ onSearchResults }) {
     }
   };
 
-  console.log('Rendering search results');
+  // console.log('Rendering search results');
   return (
       <div className="SearchBarContainer">
         <div className="SearchBar">
           <input
             className="searchInput"
-            placeholder="Enter A Song, Album, or Artist"
+            placeholder="Enter song, album, or artist"
             onChange={handleTermChange}
+            autoFocus
           />
 
           <button className="SearchButton" onClick={handleSearch}>
