@@ -1,7 +1,7 @@
 let accessToken;
 let expiresIn;
 
-const clientId = "a215e7fb7a394eb4b19bfbce7c4c7a69";
+const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUri = "http://localhost:3000";
 // const redirectUri = "https://wwww.Jamn.surge.sh";
 
@@ -9,6 +9,7 @@ const Spotify = {
   // Check if there is an access token in the URL
   getAccessToken() {
     if (accessToken) {
+      console.log("Existing accessToken:", accessToken); // Log existing accessToken
       return accessToken;
     }
 
@@ -92,47 +93,59 @@ const Spotify = {
     const userId = await Spotify.getUserId();
     const accessToken = Spotify.getAccessToken();
 
-    // Step 1: Fix the missing parenthesis in the fetch URL
-    const createPlaylistResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: playlistName,
-        description: 'New playlist description',
-        public: true,
-      })
-    });
+    console.log("User ID:", userId); // Log the user ID
+    console.log("Access Token:", accessToken); // Log the access token
 
-    // Step 2: Fix the condition to check if the playlist creation is successful
+    const createPlaylistResponse = await fetch(
+      `https://api.spotify.com/v1/users/${userId}/playlists`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: playlistName,
+          description: "New playlist description",
+          public: true,
+        }),
+      }
+    );
+
     if (!createPlaylistResponse.ok) {
-      throw new Error('Failed to create playlist.');
+      console.error("Failed to create playlist.");
+
+      throw new Error("Failed to create playlist.");
     }
 
     const playlistData = await createPlaylistResponse.json();
     const playlistId = playlistData.id;
 
+    console.log("Playlist ID:", playlistId); // Log the playlist ID
+
     // Add tracks to the new playlist
 
-    // Step 3: Fix the missing opening parenthesis in the fetch URL
-    const addTrackResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        uris: trackURIs
-      })
-    });
+    const addTrackResponse = await fetch(
+      `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uris: trackURIs,
+        }),
+      }
+    );
 
-    // Step 4: Fix the condition to check if adding tracks to the playlist is successful
+    console.log("Add Tracks Response:", addTrackResponse); // Log the addTrackResponse
+
     if (!addTrackResponse.ok) {
-      throw new Error('Failed to add tracks to playlist.');
+      throw new Error("Failed to add tracks to playlist.");
     }
 
+    console.log("Response of adding tracks:", addTrackResponse); // Log the response of adding tracks
     // Return the playlist ID
 
     return playlistId;
