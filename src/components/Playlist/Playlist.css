@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 20px 0; */
   width: 80%;
 }
 
@@ -24,17 +23,6 @@
   font-weight: 400;
 }
 
-.playlistInput:focus {
-}
-
-.playlistTitle {
-}
-
-.playlistTitle:focus {
-  outline: 1px solid #4CAF50;
-
-}
-
 .Playlist-btn {
   border: none;
   background-color: var(--primary);
@@ -52,7 +40,6 @@
   background-color: var(--backgroundTwo);
   color: var(--dark);
   transform: scale(1.1);
-
 }
 
 hr {
