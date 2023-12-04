@@ -1,16 +1,25 @@
 let accessToken;
-let expiresIn;
+let tokenExpirationTime;
 
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUri = "http://localhost:3000";
 // const redirectUri = "https://wwww.Jamn.surge.sh";
 
 const Spotify = {
-  // Check if there is an access token in the URL
   getAccessToken() {
     if (accessToken) {
-      console.log("Existing accessToken:", accessToken); // Log existing accessToken
-      return accessToken;
+      const currentTime = new Date().getTime();
+
+      console.log('Current time:', currentTime); // Log the current time
+      console.log('Token expiration time:', tokenExpirationTime); // Log the token expiration time
+
+      if (currentTime < tokenExpirationTime) {
+        console.log('Access token is still valid'); // Log that the access token is still valid
+
+        return accessToken;
+      } else {
+        console.log('Access token has expired'); // Log that the access token has expired
+      }
     }
 
     // Extract access token and expiration time from the URL
@@ -19,17 +28,15 @@ const Spotify = {
 
     if (accessTokenMatch && expiresInMatch) {
       accessToken = accessTokenMatch[1];
-      expiresIn = Number(expiresInMatch[1]);
-
-      // Clear parameters from the URL
-      window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
+      const expiresIn = Number(expiresInMatch[1]);
+      tokenExpirationTime = new Date().getTime() + expiresIn * 1000;
       window.history.pushState("Access Token", null, "/");
 
       return accessToken;
     } else {
-      // Redirect user to Spotify authorization URL
-      const redirectUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-      window.location = redirectUrl;
+      // Redirect to Spotify login page
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      window.location = accessUrl;
     }
   },
 
