@@ -23,6 +23,8 @@ function App() {
     localStorage.getItem("searchTerm") || ""
   );
   const [playlists, setPlaylists] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState(null);
+
 
   const handleNameChange = (newName) => {
     setPlaylistName(newName);
@@ -103,6 +105,10 @@ function App() {
 
   console.log(playlists); // Log the playlists state variable
 
+const handlePlay = (url) => {
+  setPlayingTrack(url);
+};
+
   return (
     <div className="App">
       {isSaving ? (
@@ -134,6 +140,8 @@ function App() {
                   searchResults={searchResults}
                   onAdd={handleAdd}
                   playlistTracks={playlistTracks}
+                  playingTrack={playingTrack}
+                  onPlay={handlePlay}
                 />
               </div>
             </div>
@@ -148,6 +156,8 @@ function App() {
                   onReset={handleResetPlaylist}
                   onSave={savePlaylist}
                   hasSearched={hasSearched} // Pass hasSearched as a prop
+                  playingTrack={playingTrack}
+                  onPlay={handlePlay}
                 />
               </div>
             </div>

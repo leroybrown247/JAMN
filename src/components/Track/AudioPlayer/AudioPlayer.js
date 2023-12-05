@@ -1,26 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './AudioPlayer.css';
 
-function AudioPlayer({ url }) {
-  const [playing, setPlaying] = useState(false);
+function AudioPlayer({ url, playingTrack, onPlay }) {
+  console.log(typeof onPlay);
+  // const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
-    if (playing) {
+    if (playingTrack === url) {
       audioRef.current.play();
     } else {
       audioRef.current.pause();
     }
-  }, [playing]);
+  }, [playingTrack, url]);
 
   const togglePlaying = () => {
-    setPlaying(!playing);
+    onPlay(url);
   };
 
   return (
     <div className="audio-player">
       <button className="toggle-button" onClick={togglePlaying}>
-        {playing ? 'Pause' : 'Play'}
+        {playingTrack === url ? 'Pause' : 'Play'}
       </button>
       <audio ref={audioRef} src={url} />
     </div>

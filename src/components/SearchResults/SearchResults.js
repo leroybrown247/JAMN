@@ -2,7 +2,7 @@ import React from "react";
 import Tracklist from "../Tracklist/Tracklist";
 import "./SearchResults.css";
 
-function SearchResults({ searchResults, onAdd, playlistTracks }) {
+function SearchResults({ searchResults, onAdd, playlistTracks, playingTrack, onPlay }) {
   // Filter out the tracks that are already in the playlist
   const filteredSearchResults = searchResults.filter(
     (searchResult) => !playlistTracks.some((playlistTrack) => playlistTrack.id === searchResult.id)
@@ -13,7 +13,13 @@ function SearchResults({ searchResults, onAdd, playlistTracks }) {
       <div className="SearchResults">
         <h2>Search Results</h2>
         <hr />
-        <Tracklist tracks={filteredSearchResults} onAdd={onAdd} isRemoval={false} />
+        <Tracklist 
+        tracks={filteredSearchResults} 
+        onAdd={onAdd} 
+        isRemoval={false}
+        playingTrack={playingTrack}
+        onPlay={onPlay} 
+        />
       </div>
     </div>
   );

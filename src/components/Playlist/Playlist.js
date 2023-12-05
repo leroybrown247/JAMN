@@ -9,6 +9,8 @@ function Playlist({
   onNameChange,
   onSave,
   hasSearched,
+  onPlay,
+  playingTrack,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(playlistName);
@@ -71,6 +73,8 @@ function Playlist({
           tracks={playlistTracks}
           onRemove={onRemove}
           isRemoval={true}
+          onPlay={onPlay}
+          playingTrack={playingTrack}
         />
         {(isEdited || hasSearched) && (
           <button className="Playlist-btn" onClick={handleSave}>
