@@ -46,8 +46,8 @@
 }
 
 .Playlist-btn:hover {
-  background-color: var(--spotify);
-  color: var(--pure);
+  background-color: var(--backgroundTwo);
+  color: var(--dark);
   transform: scale(1.1);
 }
 

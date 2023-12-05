@@ -1,5 +1,5 @@
 .App {
-  background-color: var(--background);
+  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -10,6 +10,27 @@
   font-size: calc(10px + 1.5vmin);
   color: var(--primary);
   text-align: center;
+}
+
+.heading-h1 {
+  background: linear-gradient(90deg, #00ffff, #1db954, #0000ff, black);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s ease infinite;
+  font-size: 6rem;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .app-content {
@@ -33,9 +54,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1rem;
   border-radius: 1rem;
+  background: linear-gradient(95deg, #0b1f7566, rgb(23, 101, 125));
 }
 
 .playlist-container {
@@ -53,9 +74,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1rem;
   border-radius: 1rem;
+  background: linear-gradient(95deg, #0b1f7566, rgb(23, 101, 125));
 }
 
 .saved-playlist {
@@ -63,10 +84,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1rem;
   margin: 2rem;
   border-radius: 1rem;
+  background: linear-gradient(to bottom, #0b1f7566, rgba(23, 101, 125, 0.067));
 }
 
 .saved-playlist-content {
@@ -98,4 +119,48 @@ p {
 
 .App h3 {
   text-align: left;
+}
+
+/* Make app responsive for mobile devices ipad pro and iphone SE, I would like the Search input and button to have border radius 25px, my containers should stack vertically starting from our saved playlists, new playlists and search results last */
+
+/* Apply styles for iPad Pro */
+@media only screen and (max-width: 1024px) {
+}
+
+/* Apply styles for iPhone SE */
+@media only screen and (max-width: 375px) {
+  .app-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .SearchButton {
+    border-radius: 25px;
+  }
+
+  .searchInput {
+    border-radius: 25px;
+  }
+
+  .searchResults-container {
+    display: grid;
+    place-items: center;
+    width: 80%;
+    padding: 1rem;
+    margin: auto;
+  }
+
+  .searchResults-content {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .playlist-container {
+    width: 90%;
+    padding-top: 0.3rem;
+    margin: auto;
+  }
 }

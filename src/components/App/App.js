@@ -109,7 +109,7 @@ function App() {
         <div className="loading-screen">Saving...</div>
       ) : (
         <>
-          <h1>JAMN!</h1>
+          <h1 className="heading-h1">JAMN</h1>
           <SearchBar
             onSearchResults={handleSearchResults}
             initialTerm={searchTerm}
