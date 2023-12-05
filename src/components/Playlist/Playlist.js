@@ -11,6 +11,7 @@ function Playlist({
   hasSearched,
   onPlay,
   playingTrack,
+  onPause,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(playlistName);
@@ -75,6 +76,7 @@ function Playlist({
           isRemoval={true}
           onPlay={onPlay}
           playingTrack={playingTrack}
+          onPause={onPause}
         />
         {(isEdited || hasSearched) && (
           <button className="Playlist-btn" onClick={handleSave}>

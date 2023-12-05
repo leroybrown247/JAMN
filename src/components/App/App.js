@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import Spotify from "../../Utils/Spotify"; // Import the Spotify module
-import SpotifyWebApi from "spotify-web-api-js"; // Import the Spotify Web API library
+import Spotify from "../../Utils/Spotify";
+import SpotifyWebApi from "spotify-web-api-js";
 import Playlists from "../Playlist/Playlists/Playlists";
 import "./App.css";
 
@@ -18,13 +18,12 @@ function App() {
     JSON.parse(localStorage.getItem("playlistTracks")) || []
   );
   const [isSaving, setIsSaving] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false); // New state variable
+  const [hasSearched, setHasSearched] = useState(false);
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem("searchTerm") || ""
   );
   const [playlists, setPlaylists] = useState([]);
   const [playingTrack, setPlayingTrack] = useState(null);
-
 
   const handleNameChange = (newName) => {
     setPlaylistName(newName);
@@ -55,7 +54,7 @@ function App() {
   const handleSearchResults = (searchResults, term) => {
     setSearchResults(searchResults);
     setSearchTerm(term);
-    setHasSearched(true); // Set hasSearched to true when a search is made
+    setHasSearched(true);
   };
 
   const savePlaylist = async () => {
@@ -68,7 +67,6 @@ function App() {
         playlistTracks.map((track) => track.uri)
       );
 
-      // Manually update the playlists state with the saved playlist
       setPlaylists((prevPlaylists) => [
         ...prevPlaylists,
         { name: playlistName, id: playlistId },
@@ -82,7 +80,6 @@ function App() {
     } catch (error) {
       setIsSaving(false);
       console.error(error);
-      // Handle the error as needed
     }
   };
 
@@ -94,7 +91,7 @@ function App() {
   useEffect(() => {
     spotifyApi.getUserPlaylists().then(
       (data) => {
-        console.log(data.items); // Log the playlists to the console
+        console.log(data.items);
         setPlaylists(data.items);
       },
       (err) => {
@@ -103,11 +100,15 @@ function App() {
     );
   }, []);
 
-  console.log(playlists); // Log the playlists state variable
+  console.log(playlists);
 
-const handlePlay = (url) => {
-  setPlayingTrack(url);
-};
+  const handlePlay = (url) => {
+    setPlayingTrack(url);
+  };
+
+  const handlePause = () => {
+    setPlayingTrack(null);
+  };
 
   return (
     <div className="App">
@@ -122,14 +123,14 @@ const handlePlay = (url) => {
           />
           {playlists.length > 0 && (
             <div className="saved-playlist">
-            <div className="saved-playlist-content">
-              <h2>Saved Playlists:</h2>
-              <hr />
-              
+              <div className="saved-playlist-content">
+                <h2>Saved Playlists:</h2>
+                <hr />
+
                 <p className="saved-playlist-p">
                   <Playlists playlists={playlists} />
                 </p>
-          </div>
+              </div>
             </div>
           )}
 
@@ -142,6 +143,7 @@ const handlePlay = (url) => {
                   playlistTracks={playlistTracks}
                   playingTrack={playingTrack}
                   onPlay={handlePlay}
+                  onPause={handlePause}
                 />
               </div>
             </div>
@@ -155,9 +157,10 @@ const handlePlay = (url) => {
                   onRemove={handleRemove}
                   onReset={handleResetPlaylist}
                   onSave={savePlaylist}
-                  hasSearched={hasSearched} // Pass hasSearched as a prop
+                  hasSearched={hasSearched}
                   playingTrack={playingTrack}
                   onPlay={handlePlay}
+                  onPause={handlePause}
                 />
               </div>
             </div>

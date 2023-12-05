@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './AudioPlayer.css';
 
-function AudioPlayer({ url, playingTrack, onPlay }) {
-  console.log(typeof onPlay);
+function AudioPlayer({ url, playingTrack, onPlay, onPause }) {
   // const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -15,8 +14,12 @@ function AudioPlayer({ url, playingTrack, onPlay }) {
   }, [playingTrack, url]);
 
   const togglePlaying = () => {
+    if (playingTrack === url) {
+      onPause();
+    } else {  
     onPlay(url);
   };
+};
 
   return (
     <div className="audio-player">

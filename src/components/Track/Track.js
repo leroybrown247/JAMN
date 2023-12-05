@@ -2,7 +2,7 @@ import React from "react";
 import "./Track.css";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
 
-function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack }) {
+function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack, onPause }) {
   const handleAdd = () => {
     onAdd(track.id);
   };
@@ -25,6 +25,7 @@ function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack }) {
           url={track.previewUrl}
           playingTrack={playingTrack}
           onPlay={onPlay}
+          onPause={onPause}
           />
         </div>
         {isRemoval ? (
