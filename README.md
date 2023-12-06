@@ -1,12 +1,13 @@
 # JAMN
 
-A custom playlist builder that combines multiple components, interactive search functionality, and requests to the Spotify API.
+A custom Spotify Playlist Builder that combines multiple components, interactive search functionality, and requests to the Spotify API.
 
 ## Features
 
 - Users can search for songs by song title, album title or artist name.
 - Users can see information about each song like title, artist, and album for songs they queried.
 - Users can play and or pause a snippet of their chosen search result.
+- Users can add and remove songs from there playlist that they are creating. 
 - Users can export their custom playlist to their personal Spotify account.
 - Users can see a list of recently created playlists in app.
 

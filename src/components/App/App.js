@@ -15,17 +15,21 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('.header');
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+  
+      if (header) {
+        const scrollPosition = window.scrollY;
+  
+        if (scrollPosition > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
+  
+    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
