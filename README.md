@@ -1,4 +1,3 @@
-
 # <img src="public/Leroy_Favicon.svg" width="20"> JAMN
 
 A custom Spotify Playlist Builder that combines multiple components, interactive search functionality, and requests to the Spotify API. See project deployed at https://leroybrown247.github.io/JAMN/
@@ -20,7 +19,7 @@ A custom Spotify Playlist Builder that combines multiple components, interactive
 
 - Develop a healthy understanding and relationship with error handling and testing. 
 
-- With the future outcome of better better at building reliable APIs and fine-tuning UIs.
+- Outcome is to hopefully get a better understanding of building reliable APIs and fine-tuning UIs.
 
 ## Skills and Technologies Used
 
