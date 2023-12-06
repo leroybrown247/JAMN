@@ -11,6 +11,27 @@ import logo from "../icons/Leroy_Favicon.svg";
 const spotifyApi = new SpotifyWebApi();
 
 function App() {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector('.header');
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 100) { // Adjust this value as needed
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState(
     localStorage.getItem("playlistName") || "Add Playlist Name"
@@ -111,6 +132,8 @@ function App() {
     setPlayingTrack(null);
   };
 
+  
+
   return (
     <div className="App">
       {isSaving ? (
@@ -121,10 +144,12 @@ function App() {
         <img className="logo" src={logo} alt="logo" />
           <h1 className="heading-h1">JAMN</h1>
           </div>
+          <div className="SearchBar-content" >
           <SearchBar
             onSearchResults={handleSearchResults}
             initialTerm={searchTerm}
           />
+          </div>
           {playlists.length > 0 && (
             <div className="saved-playlist">
               <div className="saved-playlist-content">
