@@ -17,7 +17,7 @@ function App() {
       const header = document.querySelector('.header');
       const scrollPosition = window.scrollY;
 
-      if (scrollPosition > 100) { // Adjust this value as needed
+      if (scrollPosition > 100) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
@@ -26,7 +26,6 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

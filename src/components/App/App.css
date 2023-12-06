@@ -25,9 +25,9 @@
 }
 
 .header.scrolled {
-  transform: scale(0.9); /* Adjust this value to control the amount of shrinking */
-  opacity: 0; /* Adjust this value to control the amount of fading */
-  transition: transform 1s, opacity 0.5s; /* Adjust these values to control the speed of the effect */
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 1s, opacity 0.5s;
 }
 
 .logo {
