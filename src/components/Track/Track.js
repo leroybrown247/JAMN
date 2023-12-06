@@ -2,7 +2,15 @@ import React from "react";
 import "./Track.css";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
 
-function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack, onPause }) {
+function Track({
+  track,
+  onAdd,
+  onRemove,
+  isRemoval,
+  onPlay,
+  playingTrack,
+  onPause,
+}) {
   const handleAdd = () => {
     onAdd(track.id);
   };
@@ -21,11 +29,11 @@ function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack, onPaus
           <p>
             {artist} | {album}
           </p>
-          <AudioPlayer 
-          url={track.previewUrl}
-          playingTrack={playingTrack}
-          onPlay={onPlay}
-          onPause={onPause}
+          <AudioPlayer
+            url={track.previewUrl}
+            playingTrack={playingTrack}
+            onPlay={onPlay}
+            onPause={onPause}
           />
         </div>
         {isRemoval ? (
@@ -39,7 +47,7 @@ function Track({ track, onAdd, onRemove, isRemoval, onPlay, playingTrack, onPaus
         )}
       </div>
     </div>
-  ); 
-} 
+  );
+}
 
 export default Track;

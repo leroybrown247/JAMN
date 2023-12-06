@@ -12,6 +12,18 @@
   text-align: center;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.logo {
+  height: 3vmin;
+  pointer-events: none;
+}
+
 .heading-h1 {
   background: linear-gradient(90deg, #00ffff, #1db954, #0000ff, black);
   background-size: 300% 300%;
@@ -39,7 +51,6 @@
   justify-content: center;
   width: 100%;
   gap: 2rem;
-  /* margin-top: 2rem; */
 }
 
 .searchResults-container {
@@ -100,12 +111,6 @@
   padding-right: 4rem;
 }
 
-.saved-playlist-p {
-  text-align: center;
-  line-height: 1.8rem;
-  color: var(--backgroundTwo);
-}
-
 hr {
   border: none;
   border-top: 1px solid #cccccc56;
@@ -121,14 +126,12 @@ p {
   text-align: left;
 }
 
-/* Make app responsive for mobile devices ipad pro and iphone SE, I would like the Search input and button to have border radius 25px, my containers should stack vertically starting from our saved playlists, new playlists and search results last */
 
-/* Apply styles for iPad Pro */
+
 @media only screen and (max-width: 1024px) {
 }
 
-/* Apply styles for iPhone SE */
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 430px) {
   .app-content {
     display: flex;
     flex-direction: column;
@@ -162,5 +165,10 @@ p {
     width: 80%;
     padding-top: 0.3rem;
     margin: auto;
+  }
+
+  .logo {
+    height: 10vmin;
+    pointer-events: none;
   }
 }

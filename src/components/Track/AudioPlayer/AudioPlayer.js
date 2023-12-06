@@ -2,14 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import './AudioPlayer.css';
 
 function AudioPlayer({ url, playingTrack, onPlay, onPause }) {
-  // const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
     if (playingTrack === url) {
-      audioRef.current.play();
+      audioRef.current.play().then(() => {
+        // Playback started successfully
+      }).catch(error => {
+        console.log(error);
+      });
     } else {
-      audioRef.current.pause();
+      if (!audioRef.current.paused) {
+        audioRef.current.pause();
+      }
     }
   }, [playingTrack, url]);
 

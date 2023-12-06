@@ -15,28 +15,27 @@ function Playlist({
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(playlistName);
-  const [isEdited, setIsEdited] = useState(false); // New state variable
+  const [isEdited, setIsEdited] = useState(false);
 
   const toggleEdit = () => {
     if (inputValue !== "") {
       setIsEditing(!isEditing);
-      setInputValue(playlistName); // Reset the input value when editing starts
+      setInputValue(playlistName);
     }
   };
 
   const handleNameChange = (value) => {
-    console.log("Input value:", value); // Log the input value
-    setInputValue(value); // Update the input value
+    console.log("Input value:", value);
+    setInputValue(value);
     onNameChange(value);
-    setIsEdited(true); // Set isEdited to true when the playlist name changes
+    setIsEdited(true);
   };
 
   const handleSave = () => {
     const trackURIs = playlistTracks.map((track) => track.uri);
     console.log(trackURIs);
-    console.log("Saving playlist with name:", playlistName); // Log the playlist name
-    console.log("Track URIs:", trackURIs); // Log the track URIs
-    // onRemove([]);
+    console.log("Saving playlist with name:", playlistName);
+    console.log("Track URIs:", trackURIs);
     onSave();
   };
 

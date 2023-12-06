@@ -10,19 +10,18 @@ const Spotify = {
     if (accessToken) {
       const currentTime = new Date().getTime();
 
-      console.log('Current time:', currentTime); // Log the current time
-      console.log('Token expiration time:', tokenExpirationTime); // Log the token expiration time
+      console.log('Current time:', currentTime);
+      console.log('Token expiration time:', tokenExpirationTime);
 
       if (currentTime < tokenExpirationTime) {
-        console.log('Access token is still valid'); // Log that the access token is still valid
+        console.log('Access token is still valid');
 
         return accessToken;
       } else {
-        console.log('Access token has expired'); // Log that the access token has expired
+        console.log('Access token has expired');
       }
     }
 
-    // Extract access token and expiration time from the URL
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
@@ -34,18 +33,15 @@ const Spotify = {
 
       return accessToken;
     } else {
-      // Redirect to Spotify login page
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
   },
 
-  // Method to check if there is an access token
   hasAccessToken() {
     return accessToken ? true : false;
   },
 
-  // Method to make a Spotify API request
   async search(term) {
     const accessToken = Spotify.getAccessToken();
     if (!accessToken) {
@@ -74,7 +70,6 @@ const Spotify = {
     throw new Error("Failed to fetch search results from Spotify.");
   },
 
-  // Method to get the user's ID
   async getUserId() {
     const accessToken = Spotify.getAccessToken();
     if (!accessToken) {
@@ -96,13 +91,12 @@ const Spotify = {
     throw new Error("Failed to fetch user ID from Spotify.");
   },
 
-  // Method to save the user's playlist to Spotify
   async savePlaylist(playlistName, trackURIs) {
     const userId = await Spotify.getUserId();
     const accessToken = Spotify.getAccessToken();
 
-    console.log("User ID:", userId); // Log the user ID
-    console.log("Access Token:", accessToken); // Log the access token
+    console.log("User ID:", userId); 
+    console.log("Access Token:", accessToken);
 
     const createPlaylistResponse = await fetch(
       `https://api.spotify.com/v1/users/${userId}/playlists`,
@@ -129,9 +123,7 @@ const Spotify = {
     const playlistData = await createPlaylistResponse.json();
     const playlistId = playlistData.id;
 
-    console.log("Playlist ID:", playlistId); // Log the playlist ID
-
-    // Add tracks to the new playlist
+    console.log("Playlist ID:", playlistId);
 
     const addTrackResponse = await fetch(
       `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
@@ -147,14 +139,13 @@ const Spotify = {
       }
     );
 
-    console.log("Add Tracks Response:", addTrackResponse); // Log the addTrackResponse
+    console.log("Add Tracks Response:", addTrackResponse);
 
     if (!addTrackResponse.ok) {
       throw new Error("Failed to add tracks to playlist.");
     }
 
-    console.log("Response of adding tracks:", addTrackResponse); // Log the response of adding tracks
-    // Return the playlist ID
+    console.log("Response of adding tracks:", addTrackResponse);
 
     return playlistId;
   },

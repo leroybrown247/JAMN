@@ -6,6 +6,7 @@ import Spotify from "../../Utils/Spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Playlists from "../Playlist/Playlists/Playlists";
 import "./App.css";
+import logo from "../icons/Leroy_Favicon.svg";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -116,7 +117,10 @@ function App() {
         <div className="loading-screen">Saving...</div>
       ) : (
         <>
+        <div className="header">
+        <img className="logo" src={logo} alt="logo" />
           <h1 className="heading-h1">JAMN</h1>
+          </div>
           <SearchBar
             onSearchResults={handleSearchResults}
             initialTerm={searchTerm}
@@ -127,7 +131,7 @@ function App() {
                 <h2>Saved Playlists:</h2>
                 <hr />
 
-                <p className="saved-playlist-p">
+                <p>
                   <Playlists playlists={playlists} />
                 </p>
               </div>

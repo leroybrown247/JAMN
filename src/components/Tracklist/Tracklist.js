@@ -2,7 +2,15 @@ import React from "react";
 import Track from "../Track/Track";
 import "./Tracklist.css";
 
-function Tracklist({ tracks, onAdd, onRemove, isRemoval, onPlay, playingTrack, onPause }) {
+function Tracklist({
+  tracks,
+  onAdd,
+  onRemove,
+  isRemoval,
+  onPlay,
+  playingTrack,
+  onPause,
+}) {
   return (
     <div className="Tracklist">
       {tracks &&
