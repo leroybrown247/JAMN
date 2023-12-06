@@ -3,7 +3,7 @@ let tokenExpirationTime;
 
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 // const redirectUri = "http://localhost:3000";
-const redirectUri = "https://leroybrown247.github.io/JAMN";
+const redirectUri = "https://leroybrown247.github.io/JAMN/";
 
 
 const Spotify = {
