@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/JAMN/static/css/main.3219dae9.css",
-    "main.js": "/JAMN/static/js/main.c4abaa0d.js",
+    "main.js": "/JAMN/static/js/main.9a41f787.js",
     "static/js/787.274d76e5.chunk.js": "/JAMN/static/js/787.274d76e5.chunk.js",
     "static/media/Leroy_Favicon.svg": "/JAMN/static/media/Leroy_Favicon.6719c353bf0316c610737bb02bc3918d.svg",
     "index.html": "/JAMN/index.html",
     "main.3219dae9.css.map": "/JAMN/static/css/main.3219dae9.css.map",
-    "main.c4abaa0d.js.map": "/JAMN/static/js/main.c4abaa0d.js.map",
+    "main.9a41f787.js.map": "/JAMN/static/js/main.9a41f787.js.map",
     "787.274d76e5.chunk.js.map": "/JAMN/static/js/787.274d76e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3219dae9.css",
-    "static/js/main.c4abaa0d.js"
+    "static/js/main.9a41f787.js"
   ]
 }
