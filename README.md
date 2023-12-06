@@ -1,6 +1,9 @@
-# JAMN
+
+# <img src="public/Leroy_Favicon.svg" width="20"> JAMN
 
 A custom Spotify Playlist Builder that combines multiple components, interactive search functionality, and requests to the Spotify API.
+
+![](public/Jamn.gif)
 
 ## Features
 
